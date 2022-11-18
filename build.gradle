@@ -22,7 +22,8 @@ dependencies {
     implementation 'io.appium:java-client:7.6.0'
     // https://mvnrepository.com/artifact/org.testng/testng
     implementation 'org.testng:testng:7.6.1'
-
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    //compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.29'
 }
 
 test {

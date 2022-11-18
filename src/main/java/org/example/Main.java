@@ -28,7 +28,7 @@ public class Main {
 
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        String filePath = "D:\\mova.apk";
+        String filePath = "C:\\mova2.apk";
         caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("deviceName",  "OnePlus_BE2029");

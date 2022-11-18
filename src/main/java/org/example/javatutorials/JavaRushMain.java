@@ -12,3 +12,5 @@ public class JavaRushMain {
         return a + b;
     }
 }
+
+
