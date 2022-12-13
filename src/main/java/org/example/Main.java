@@ -6,11 +6,12 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -28,7 +29,7 @@ public class Main {
 
     @BeforeMethod
     public void setup() throws MalformedURLException {
-        String filePath = "C:\\mova2.apk";
+        String filePath = "D:\\mova.apk";
         caps = new DesiredCapabilities();
         caps.setCapability("platformName", "Android");
         caps.setCapability("deviceName",  "OnePlus_BE2029");
@@ -36,7 +37,7 @@ public class Main {
         caps.setCapability("skipUnlock", true);
         caps.setCapability("app", filePath);
         caps.setCapability("showGradleLog", true);
-        caps.setCapability("appPackage", "biz.dirion.mova.dev");
+        //caps.setCapability("appPackage", "biz.dirion.mova.dev");
       //  caps.setCapability("forceEspressoRebuild ", true);
       //  caps.setCapability("androidInstallTimeout ", 90000);
       //  caps.setCapability("androidInstallTimeout", 90000);
@@ -52,13 +53,19 @@ public class Main {
 
     @Test
     public void basicTest() throws InterruptedException {
-
+        File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         //driver.findElement(MobileBy.AccessibilityId("Skip_button")).click();
-        driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"Skip_button\")")).click();
+        WebElement skipOnboarding = driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"Skip_button\")"));
+        skipOnboarding.click();
         driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"Facebook_button\")"));
         driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"Google_button\")"));
         driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"Apple_button\")"));
         driver.findElement(MobileBy.AndroidUIAutomator("new UiSelector().resourceId(\"SingIn_btn\")")).click();
+
+
+
+
+
         //driver.findElement(MobileBy.AccessibilityId("SingIn_btn")).click();
 //        driver.findElement(AppiumBy.accessibilityId("Login_screen"));
 //        driver.findElement(AppiumBy.accessibilityId("Email_textfield")).click();
@@ -67,8 +74,8 @@ public class Main {
 //        driver.findElement(AppiumBy.xpath("//android.widget.EditText[2]")).sendKeys("V.KZ5UtXMUHwwM!");
 //        driver.hideKeyboard();
 //        driver.findElement(By.xpath("//*[@content-desc=\"Login_screen\"]/*")).click();
-        loginTest();
-        Thread.sleep(5000L);
+
+
     }
 
 
